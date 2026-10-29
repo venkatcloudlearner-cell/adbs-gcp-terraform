@@ -1,0 +1,17 @@
+# CUSTOMER INPUTS: replace project/region placeholders and review all CIDRs before planning.
+# Optional sizing overrides: compute_count = 2 and storage_tb = 1.
+# Supply the ADMIN password separately with TF_VAR_admin_password; do not commit secrets.
+project_id = "YOUR_PROJECT_ID"
+# Replace before planning. Select the region matching your verified Oracle service availability.
+region = "REPLACE_WITH_VERIFIED_REGION"
+# Example selection: region us-east4 and GCP Oracle Zone us-east4-b-r1.
+gcp_oracle_zone = "REPLACE_WITH_VERIFIED_GCP_ORACLE_ZONE"
+name_prefix = "adbs-demo"
+# Examples only: verify no overlap with existing or connected networks.
+client_cidr = "10.20.0.0/24"
+database_cidr = "10.21.0.0/24"
+deletion_protection = true
+create_database = false
+# Fill these after network provisioning and before setting create_database = true.
+database_version = ""
+contact_email = ""
