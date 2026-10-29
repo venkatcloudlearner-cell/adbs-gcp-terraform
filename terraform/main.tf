@@ -85,6 +85,10 @@ resource "google_oracle_database_autonomous_database" "demo" {
     }
   }
   lifecycle {
+    # Use the password on creation; manage later password rotations outside Terraform.
+    # This provider replaces the database when admin_password changes.
+    ignore_changes = [admin_password]
+
     precondition {
       condition     = !var.create_database || (length(var.admin_password) >= 12 && length(var.admin_password) <= 30)
       error_message = "Supply a 12-30 character ADMIN password before enabling database creation."
